@@ -74,8 +74,9 @@ public class Login extends HttpServlet {
 
 				}
 
-				req.getRequestDispatcher("/dashboard").forward(req, resp);
+				//req.getRequestDispatcher("/dashboard").forward(req, resp);
 
+				req.getRequestDispatcher("/jsp/welcome.jsp").forward(req, resp);
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
