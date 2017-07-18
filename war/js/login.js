@@ -6,3 +6,17 @@ function goToAnywhereWorksSignIn() {
 			+ '&access_type=offline'
 			+ '&scope=awapis.identity&redirect_uri=' + redirectUrl;
 }
+function getUserDetails() {
+	var xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function() {
+		xhttp.onload = function() {
+			
+			
+		};
+	}
+	xhttp.open("get", "", true);
+	xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+	
+
+}

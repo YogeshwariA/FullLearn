@@ -19,7 +19,6 @@ import com.fulllearn.model.User;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
-
 @SuppressWarnings("serial")
 public class Login extends HttpServlet {
 
@@ -71,15 +70,13 @@ public class Login extends HttpServlet {
 					User user = awData.getUser();
 					HttpSession session = req.getSession();
 					session.setAttribute("user", user);
-
 				}
 
-				//req.getRequestDispatcher("/dashboard").forward(req, resp);
+				 //req.getRequestDispatcher("").forward(req, resp);
+				resp.sendRedirect("/dashboard");
 
-				req.getRequestDispatcher("/jsp/welcome.jsp").forward(req, resp);
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
