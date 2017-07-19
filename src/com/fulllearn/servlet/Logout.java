@@ -16,7 +16,7 @@ public class Logout extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	 if ("/logout".equals(req.getRequestURI())) {
+		if ("/logout".equals(req.getRequestURI())) {
 			sessionInValidate(req, resp);
 		}
 	}
@@ -24,11 +24,11 @@ public class Logout extends HttpServlet {
 	private void sessionInValidate(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		HttpSession session = req.getSession();
-		if (session != null && session.getAttribute("user") != null) {
-			session.invalidate();
-			req.getRequestDispatcher("/WEB-INF/html/login.html").forward(req, resp);
-		} 
+
+		session.setAttribute("user", null);
+		session.invalidate();
+		req.getRequestDispatcher("/WEB-INF/html/login.html").forward(req, resp);
+
 	}
 
-	
 }

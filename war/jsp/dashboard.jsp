@@ -98,57 +98,64 @@
 			<div id="page-inner">
 				<div class="dashboard-cards">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="col-xs-12 col-sm-6 col-md-4 full-card-center">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
 								<div class="card-stacked red">
 									<div class="card-content">
 										<h3>Overview</h3>
 									</div>
-									<div  class="card-action">
+									<div  class="card-action ">
 										<strong>00:00</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
+						
+					</div>
+				</div>
+			</div>
+			<div id="page-inner">
+			<div class="dashboard-cards">
+			<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
 								<div class="card-stacked orange">
 									<div class="card-content">
 										<h3>This week</h3>
 									</div>
-									<div class="card-action">
+									<div class="card-action full-card-lg-action">
 										<strong>00:00</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="col-xs-12 col-sm-6 col-md-4 ">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
 								<div class="card-stacked blue">
 									<div   class="card-content">
 										<h3>Four weeks</h3>
 									</div>
-									<div class="card-action">
+									<div class="card-action full-card-lg-action">
 										<strong id="time_change1">00:00</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
 								<div class="card-stacked green">
 									<div class="card-content">
 										<h3>Twelve weeks</h3>
 									</div>
-									<div class="card-action">
+									<div class="card-action full-card-lg-action">
 										<strong id="time_change2">00:00</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
 			</div>
+		</div>
+		</div>
 		</div>
 	</div>
 </body>

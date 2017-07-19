@@ -33,7 +33,8 @@ body {
 	width: 100%;
 	margin: 0 20px 10px 0px;
 	padding: 15px 30px;
-	min-height: 100vh;
+	/* min-height: 100vh; */
+	min-height: 25vhvh;
 }
 
 .header .container-fluid {
@@ -980,4 +981,16 @@ ul.dropdown-menu.dropdown-messages li a div {
 	.top-navbar .nav>li>a {
 		padding: 17px 9px;
 	}
+}
+
+
+
+.full-card-center
+{
+	left:352px;
+}
+
+.full-card-lg-action
+{
+	min-height:400px;
 }
