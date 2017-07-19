@@ -734,13 +734,22 @@ ul.dropdown-menu.dropdown-messages li a div {
 }
 
 .dashboard-cards .card-content {
+	padding: 14px 20px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+.dashboard-cards .card-action{
+	text-align:center;
+}
+.dashboard-cards .card-content h3{
+	text-align:center;
+	font-size:large;
 }
 
 .dashboard-cards .card-action strong {
 	font-weight: 700;
-	font-size: 16px;
+	font-size: 33px;
 	color: rgba(255, 255, 255, 0.65);
+	
 }
 
 .donutpad {

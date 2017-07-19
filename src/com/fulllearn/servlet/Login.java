@@ -72,7 +72,6 @@ public class Login extends HttpServlet {
 					session.setAttribute("user", user);
 				}
 
-				 //req.getRequestDispatcher("").forward(req, resp);
 				resp.sendRedirect("/dashboard");
 
 			}

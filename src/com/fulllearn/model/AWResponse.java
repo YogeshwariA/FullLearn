@@ -1,5 +1,4 @@
 package com.fulllearn.model;
-
 public class AWResponse {
 	private boolean ok;
 	private AWData data;
