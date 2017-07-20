@@ -31,22 +31,4 @@ public class Dashboard extends HttpServlet {
 		}
 	}
 
-	/*
-	 * private AWStatsData getUserDetails(HttpServletRequest req,
-	 * HttpServletResponse resp) throws IOException { HttpSession session =
-	 * req.getSession(); User user = (User) session.getAttribute("user"); String
-	 * userId = user.getId(); // System.out.println(userId); String jsonResponse
-	 * = HttpConnectionHelper.getJson("GET",
-	 * "https://full-learn.appspot.com/api/learn/stats/userId/" + userId, null,
-	 * null); AWStatsResponse statsResponse= MAPPER.readValue(jsonResponse,
-	 * AWStatsResponse.class); AWStatsData data= statsResponse.getData();
-	 * System.out.println("Four Week Avg "+data.getFourWeekAvg());
-	 * System.out.println(jsonResponse); return data;
-	 * 
-	 * }
-	 * 
-	 * AWStatsData data = getUserDetails(req, resp);
-	 * resp.setContentType("application/json");
-	 * resp.getWriter().write(MAPPER.writeValueAsString(data));
-	 */
 }

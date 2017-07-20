@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
 				+ "&client_secret=" + Constants.CLIENT_SECRET + "&access_type=offline" + "&redirect_uri="
 				+ Constants.REDIRECT_URL + "&grant_type=authorization_code";
 
-		String result = HttpConnectionHelper.getJson("GET", Constants.OAUTH_ACCESS_TOKEN_URL, urlParameters, null);
+		String result = HttpConnectionHelper.getJson("GET", Constants.OAUTH_ACCESS_TOKEN_URL+"/o/oauth2/v1/token", urlParameters, null);
 
 		try {
 			if (!result.isEmpty()) {
@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
 				headers.put("Content-Type", "application/json");
 				headers.put("Authorization", "Bearer " + access_token);
 
-				String userInfoJson = HttpConnectionHelper.getJson("GET", Constants.OAUTH_USER_API, null, headers);
+				String userInfoJson = HttpConnectionHelper.getJson("GET", Constants.OAUTH_USER_API+"/api/v1/user/me", null, headers);
 
 				System.out.println(userInfoJson);
 

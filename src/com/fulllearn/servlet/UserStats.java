@@ -13,7 +13,7 @@ import com.fulllearn.helper.HttpConnectionHelper;
 import com.fulllearn.model.AWStatsData;
 import com.fulllearn.model.AWStatsResponse;
 import com.fulllearn.model.User;
-
+import com.fulllearn.helper.Constants;
 @SuppressWarnings("serial")
 public class UserStats extends HttpServlet {
 	private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -39,8 +39,7 @@ public class UserStats extends HttpServlet {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
 		String userId = user.getId();
-		// System.out.println(userId);
-		String jsonResponse = HttpConnectionHelper.getJson("GET","https://full-learn.appspot.com/api/learn/stats/userId/" + userId, null, null);
+		String jsonResponse = HttpConnectionHelper.getJson("GET",Constants.FULL_LEARN_API+"/api/learn/stats/userId/" + userId, null, null);
 		AWStatsResponse statsResponse = MAPPER.readValue(jsonResponse, AWStatsResponse.class);
 		AWStatsData data = statsResponse.getData();
 		System.out.println("Four Week Avg " + data.getFourWeekAvg());

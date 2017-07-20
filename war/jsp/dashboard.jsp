@@ -36,14 +36,6 @@
 					class="large material-icons" href="#"><strong><img
 						align="left" src="images/fav-icon.png">FullLearn</strong></a>
 			</div>
-			<%-- <ul class="nav navbar-top-links navbar-right">
-               <li><a class="dropdown-button waves-effect waves-dark"
-                  href="#!" data-activates="dropdown1"> <img class="img"
-                  id="profilePic" src="${user.photoId}"></img> <b>${user.firstName}</b>
-                  <i class="material-icons right">arrow_drop_down</i></a>
-               </li>
-            </ul> --%>
-
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#"
 					class="dropdown-toggle dropdown-button waves-effect waves-dark"
@@ -100,26 +92,26 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-4 full-card-center">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div class="card-stacked red">
+								<div id="color_for_overview" class="card-stacked red">
 									<div class="card-content">
 										<h3>Overview</h3>
 									</div>
-									<div  class="card-action ">
+									<div class="card-action ">
 										<strong>00:00</strong>
 									</div>
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 			<div id="page-inner">
-			<div class="dashboard-cards">
-			<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4">
+				<div class="dashboard-cards">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div class="card-stacked orange">
+								<div id="color_for_this" class="card-stacked orange">
 									<div class="card-content">
 										<h3>This week</h3>
 									</div>
@@ -131,8 +123,8 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4 ">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div class="card-stacked blue">
-									<div   class="card-content">
+								<div id="color_for_four" class="card-stacked blue">
+									<div class="card-content">
 										<h3>Four weeks</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
@@ -143,7 +135,7 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div class="card-stacked green">
+								<div id="color_for_twelve" class="card-stacked green">
 									<div class="card-content">
 										<h3>Twelve weeks</h3>
 									</div>
@@ -153,9 +145,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		</div>
 		</div>
 	</div>
 </body>
