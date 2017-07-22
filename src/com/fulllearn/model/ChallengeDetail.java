@@ -6,7 +6,20 @@ public class ChallengeDetail {
 private int minutes;
 private Map<String,Integer> challenges_details;
 private int challenges_completed;
-
+private long startDate;
+private long endDate;
+public long getStartDate() {
+	return startDate;
+}
+public void setStartDate(long startDate) {
+	this.startDate = startDate;
+}
+public long getEndDate() {
+	return endDate;
+}
+public void setEndDate(long endDate) {
+	this.endDate = endDate;
+}
 public int getMinutes() {
 	return minutes;
 }

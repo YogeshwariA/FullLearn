@@ -8,9 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script type="text/javascript" src="js/jquery-3.2.1.min.js/"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
 <script type="text/javascript" src="js/dashboard.js"></script>
-
 <title>Full Learn</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -22,6 +20,7 @@
 <link href="css/font-awesome.css" rel="stylesheet" />
 <!-- Custom Styles-->
 <link href="css/custom-styles.css" rel="stylesheet" />
+
 <!-- Google Fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
@@ -31,7 +30,6 @@
 	<div id="wrapper">
 		<nav class="navbar navbar-default top-navbar" role="navigation">
 			<div class="navbar-header">
-
 				<a class="navbar-brand waves-effect waves-dark"
 					class="large material-icons" href="#"><strong><img
 						align="left" src="images/fav-icon.png">FullLearn</strong></a>
@@ -45,26 +43,14 @@
 						class="material-icons right">arrow_drop_down</i></a>
 					<ul class="dropdown-menu">
 						<li><a href="/logout">Logout</a></li>
-
 					</ul></li>
 			</ul>
-
-
 		</nav>
 
-
-		<!-- Dropdown Structure -->
-		<!-- <ul id="dropdown5" class="dropdown-content">
-           <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a>
-            </li>
-            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
-            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-         </ul> -->
-		<!--/. NAV TOP  -->
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
-					<li><a id="dashboard" href="javascript:getUserDetails()"
+					<li><a id="dashboard"
 						class="active-menu waves-effect waves-dark"><i
 							class="fa fa-dashboard"></i>Dashboard</a></li>
 					<!-- <li><a class="waves-effect waves-dark">
@@ -90,7 +76,7 @@
 			<div id="page-inner">
 				<div class="dashboard-cards">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-4 full-card-center">
+						<div class="col-xs-12 col-sm-6 col-md-5 full-card-center">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
 								<div id="color_for_overview" class="card-stacked red">
 									<div class="card-content">
@@ -102,7 +88,6 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -116,7 +101,8 @@
 										<h3>This week</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
-										<strong>00:00</strong>
+										<img class="loader" id="loader" src="images/loader.gif"></img>
+										<strong id="change_time_0"></strong>
 									</div>
 								</div>
 							</div>
@@ -128,7 +114,8 @@
 										<h3>Four weeks</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
-										<strong id="time_change1">00:00</strong>
+										<img class="loader" id="loader-4" src="images/loader.gif"></img>
+										<strong id="change_time_4">00:00</strong>
 									</div>
 								</div>
 							</div>
@@ -140,7 +127,8 @@
 										<h3>Twelve weeks</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
-										<strong id="time_change2">00:00</strong>
+										<img class="loader" id="loader-12" src="images/loader.gif"></img>
+										<strong id="change_time_12">00:00</strong>
 									</div>
 								</div>
 							</div>

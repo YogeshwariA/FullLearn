@@ -48,11 +48,13 @@ public class UserChallenge extends HttpServlet {
 		System.out.println(jsonResponse);
 
 		AUResponse response = MAPPER.readValue(jsonResponse, AUResponse.class);
+		
 		Map<String, ChallengeDetail> data = response.getData();
 
 		ChallengeDetail details = data.get(email);
-		
-		System.out.println(details);
+		details.setStartDate(startTime);
+		details.setEndDate(endTime);
+		System.out.println(details.toString());
 
 		return details;
 
@@ -106,7 +108,6 @@ public class UserChallenge extends HttpServlet {
 		calendar.set(Calendar.MINUTE, 0);
 		calendar.set(Calendar.SECOND, 0);
 		calendar.set(Calendar.MILLISECOND, 0);
-
 		return calendar;
 	}
 

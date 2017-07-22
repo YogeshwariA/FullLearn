@@ -1,8 +1,27 @@
+document.onreadystatechange = function() {
+	showDashboard();
+};
+
+function showDashboard() {
+	getUserDetails();
+	getChallengeInfo();
+}
+
 function getUserDetails() {
 	var xhttp = new XMLHttpRequest();
-	getChallengeInfo();
 	xhttp.onreadystatechange = function() {
+		var state = xhttp.readyState;
+		if (state == 0 || state == 1 || state == 2 || state == 3) {
+			document.getElementById('loader-4').style.display = 'inline-block';
+			document.getElementById('loader-12').style.display = 'inline-block';
+
+
+		} 
+		
 		xhttp.onload = function() {
+			document.getElementById('loader-4').style.display = 'none';
+			document.getElementById('loader-12').style.display = 'none';
+
 			var userDetail = JSON.parse(xhttp.responseText);
 			show(userDetail);
 		};
@@ -15,9 +34,10 @@ function getUserDetails() {
 }
 
 function show(userDetail) {
-	console.log(userDetail.fourWeekAvg);
-	fourWeekAvg = document.getElementById('time_change1').innerHTML = showTime(userDetail.fourWeekAvg);
-	twelveWeekAvg = document.getElementById('time_change2').innerHTML = showTime(userDetail.twelveWeekAvg);
+
+	fourWeekAvg = document.getElementById('change_time_4').innerHTML = showTime(userDetail.fourWeekAvg * 4);
+	twelveWeekAvg = document.getElementById('change_time_12').innerHTML = showTime(userDetail.twelveWeekAvg * 12);
+
 }
 
 function showTime(givenMins) {
@@ -26,9 +46,17 @@ function showTime(givenMins) {
 	}
 	const
 	minsPerHour = 60;
+	let
+	respString = '';
 	var hours = Math.floor(givenMins / minsPerHour);
 	var mins = givenMins % minsPerHour;
-	return hours + 'hrs ' + mins + 'mins';
+	if (hours > 0) {
+		respString = hours + 'hrs ';
+	}
+	if (mins > 0) {
+		respString += mins + 'mins';
+	}
+	return respString;
 }
 function changeColor(fourWeekAvg) {
 	document.getElementById('color_for_four').innerHTML = getColor(fourWeekAvg);
@@ -46,12 +74,26 @@ function getColor(avgMins) {
 function getChallengeInfo() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
+		var state = xhttp.readyState;
+		if (state == 0 || state == 1 || state == 2 || state == 3) {
+			document.getElementById('loader').style.display = 'inline-block';
+
+		} 
 		xhttp.onload = function() {
-			var userDetail = JSON.parse(xhttp.responseText);
-			console.log(userDetail);
+			document.getElementById('loader').style.display = 'none';
+			var userDetails = JSON.parse(xhttp.responseText);
+			console.log(userDetails);
+			getDetails(userDetails);
 		};
+		
 	}
 	xhttp.open("GET", '/challenge', true);
 	xhttp.setRequestHeader('content-type', 'application/json');
 	xhttp.send();
+}
+
+function getDetails(userDetails) {
+
+	thisWeek = document.getElementById('change_time_0').innerHTML = showTime(userDetails.minutes);
+
 }

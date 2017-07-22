@@ -74,6 +74,7 @@ public class Login extends HttpServlet {
 
 				//req.getRequestDispatcher("/dashboard").forward(req, resp);
 				resp.sendRedirect("/dashboard");
+				
 
 			}
 		} catch (JSONException e) {

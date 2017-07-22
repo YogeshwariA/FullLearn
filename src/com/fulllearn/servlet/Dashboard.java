@@ -25,7 +25,9 @@ public class Dashboard extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		if (session.getAttribute("user")!= null) {
+		
 			req.getRequestDispatcher("/jsp/dashboard.jsp").forward(req, resp);
+			
 		} else {
 			req.getRequestDispatcher("WEB-INF/html/login.html").forward(req, resp);
 		}

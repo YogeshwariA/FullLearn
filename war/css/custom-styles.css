@@ -23,6 +23,10 @@ body {
 	align: right;
 }
 
+.card-size {
+	border-bottom: 1px solid transparent;
+}
+
 #page-wrapper {
 	padding: 15px 15px;
 	min-height: 600px;
@@ -34,7 +38,7 @@ body {
 	margin: 0 20px 10px 0px;
 	padding: 15px 30px;
 	/* min-height: 100vh; */
-	min-height: 25vhvh;
+	min-height: 25vh;
 }
 
 .header .container-fluid {
@@ -525,7 +529,7 @@ div#sideNav:hover {
 	padding: 0px;
 }
 
-.top-navbar .nav>li>a>img{
+.top-navbar .nav>li>a>img {
 	width: 22px;
 	height: 22px;
 }
@@ -735,22 +739,24 @@ ul.dropdown-menu.dropdown-messages li a div {
 }
 
 .dashboard-cards .card-content {
+	
 	padding: 14px 20px;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+	border-bottom: 2px solid rgba(255, 255, 255, 0.18);
 }
-.dashboard-cards .card-action{
-	text-align:center;
+
+.dashboard-cards .card-action {
+	text-align: center;
 }
-.dashboard-cards .card-content h3{
-	text-align:center;
-	font-size:large;
+
+.dashboard-cards .card-content h3 {
+	text-align: center;
+	font-size: large;
 }
 
 .dashboard-cards .card-action strong {
 	font-weight: 700;
 	font-size: 33px;
 	color: rgba(255, 255, 255, 0.65);
-	
 }
 
 .donutpad {
@@ -971,6 +977,15 @@ ul.dropdown-menu.dropdown-messages li a div {
 	}
 }
 
+/* .loader {
+	width: 10%;
+	height: 10%;
+	position: fixed;
+	background:
+		url("https://www.creditmutuel.fr/cmne/fr/banques/webservices/nswr/images/loading.gif")
+		no-repeat center center rgba(0, 0, 0, 0.25)
+} */
+
 @media ( max-width :320px) {
 	ul#dropdown1 {
 		left: 0px !important;
@@ -983,14 +998,13 @@ ul.dropdown-menu.dropdown-messages li a div {
 	}
 }
 
-
-
-.full-card-center
-{
-	left:352px;
+.full-card-center {
+	left: 352px;
 }
 
-.full-card-lg-action
-{
-	min-height:400px;
+.full-card-lg-action {
+	min-height: 400px;
+}
+.loader{
+	z-index:0 !important;
 }
