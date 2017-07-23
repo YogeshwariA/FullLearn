@@ -102,6 +102,7 @@
 									</div>
 									<div class="card-action full-card-lg-action">
 										<img class="loader" id="loader" src="images/loader.gif"></img>
+										<div id="date"></div>
 										<strong id="change_time_0"></strong>
 									</div>
 								</div>
@@ -115,7 +116,8 @@
 									</div>
 									<div class="card-action full-card-lg-action">
 										<img class="loader" id="loader-4" src="images/loader.gif"></img>
-										<strong id="change_time_4">00:00</strong>
+										<div id="date-4"></div>
+										<strong id="change_time_4"></strong>
 									</div>
 								</div>
 							</div>
@@ -128,7 +130,10 @@
 									</div>
 									<div class="card-action full-card-lg-action">
 										<img class="loader" id="loader-12" src="images/loader.gif"></img>
-										<strong id="change_time_12">00:00</strong>
+										<div id="date-12"></div>
+
+
+										<strong id="change_time_12"></strong>
 									</div>
 								</div>
 							</div>

@@ -34,21 +34,19 @@ public class UserChallenge extends HttpServlet {
 		resp.getWriter().write(MAPPER.writeValueAsString(challengeDetails));
 	}
 
-	private ChallengeDetail getChallengeDetails(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+	private ChallengeDetail getChallengeDetails(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
 		String email = user.getLogin();
-		long startTime = getStartDate(0);
-		long endTime = getEndDate(0);
+		long startTime = getStartDate(4);
+		long endTime = getEndDate(4);
 		String urlparameter = "apiKey=" + Constants.API_KEY + "&email=" + email + "&startTime=" + startTime
 				+ "&endTime=" + endTime;
 		String jsonResponse = HttpConnectionHelper.getJson("GET", Constants.CHALLENGE_API + "/v1/completedMinutes",
 				urlparameter, null);
 		System.out.println(jsonResponse);
-
 		AUResponse response = MAPPER.readValue(jsonResponse, AUResponse.class);
-		
+
 		Map<String, ChallengeDetail> data = response.getData();
 
 		ChallengeDetail details = data.get(email);
@@ -68,8 +66,13 @@ public class UserChallenge extends HttpServlet {
 		switch (week) {
 		case 0:
 			int dayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK);
-			calendar.add(Calendar.DATE, -(dayOfTheWeek - Calendar.MONDAY));
-			break;
+			if (dayOfTheWeek == Calendar.SUNDAY) {
+				calendar.add(Calendar.DATE, -(Calendar.SATURDAY - dayOfTheWeek));
+				break;
+			} else {
+				calendar.add(Calendar.DATE, -(dayOfTheWeek - Calendar.MONDAY));
+				break;
+			}
 
 		case 4:
 		case 12:
@@ -80,7 +83,7 @@ public class UserChallenge extends HttpServlet {
 
 		}
 		result = calendar.getTimeInMillis();
-		System.out.println(week + "-" + result);
+		
 		return result;
 	}
 

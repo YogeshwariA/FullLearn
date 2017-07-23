@@ -15,9 +15,8 @@ function getUserDetails() {
 			document.getElementById('loader-4').style.display = 'inline-block';
 			document.getElementById('loader-12').style.display = 'inline-block';
 
+		}
 
-		} 
-		
 		xhttp.onload = function() {
 			document.getElementById('loader-4').style.display = 'none';
 			document.getElementById('loader-12').style.display = 'none';
@@ -36,6 +35,7 @@ function getUserDetails() {
 function show(userDetail) {
 
 	fourWeekAvg = document.getElementById('change_time_4').innerHTML = showTime(userDetail.fourWeekAvg * 4);
+
 	twelveWeekAvg = document.getElementById('change_time_12').innerHTML = showTime(userDetail.twelveWeekAvg * 12);
 
 }
@@ -78,14 +78,19 @@ function getChallengeInfo() {
 		if (state == 0 || state == 1 || state == 2 || state == 3) {
 			document.getElementById('loader').style.display = 'inline-block';
 
-		} 
+		}
 		xhttp.onload = function() {
 			document.getElementById('loader').style.display = 'none';
+			var timeOut = 30000;
+			xhttp.ontimeout = function(e) {
+				document.getElementById('loader').style.display = 'TimeOut!';
+			};
 			var userDetails = JSON.parse(xhttp.responseText);
 			console.log(userDetails);
 			getDetails(userDetails);
+
 		};
-		
+
 	}
 	xhttp.open("GET", '/challenge', true);
 	xhttp.setRequestHeader('content-type', 'application/json');
@@ -93,7 +98,18 @@ function getChallengeInfo() {
 }
 
 function getDetails(userDetails) {
+	var startDate = new Date(userDetails.startDate);
+	var endDate = new Date(userDetails.endDate);
+	var startDateString = startDate.getDate() + "/" + startDate.getMonth()
+			+ "/" + startDate.getFullYear();
+	var endDateString = endDate.getDate() + "/" + endDate.getMonth() + "/"
+			+ endDate.getFullYear();
+	var date = startDateString + "- " + endDateString;
 
+	console.log(date);
+	dateOf = document.getElementById('date').innerHTML = date;
 	thisWeek = document.getElementById('change_time_0').innerHTML = showTime(userDetails.minutes);
+	/*dateOfFour = document.getElementById('date-4').innerHTML = date;
+	dateOfFour = document.getElementById('date-12').innerHTML = date;*/
 
 }
