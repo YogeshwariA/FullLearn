@@ -4,25 +4,37 @@ document.onreadystatechange = function() {
 
 function showDashboard() {
 	getUserDetails();
-	getChallengeInfo();
+
+	getChallengeInfo(0);
+	getChallengeInfo(4);
+	getChallengeInfo(12);
 }
+const
+monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep","Oct", "Nov", "Dec" ];
 
 function getUserDetails() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		var state = xhttp.readyState;
 		if (state == 0 || state == 1 || state == 2 || state == 3) {
-			document.getElementById('loader-4').style.display = 'inline-block';
-			document.getElementById('loader-12').style.display = 'inline-block';
+			/*document.getElementById('loader-4').style.display = 'inline-block';
+			document.getElementById('loader-12').style.display = 'inline-block';*/
 
 		}
 
 		xhttp.onload = function() {
-			document.getElementById('loader-4').style.display = 'none';
-			document.getElementById('loader-12').style.display = 'none';
+			/*document.getElementById('loader-4').style.display = 'none';
+			document.getElementById('loader-12').style.display = 'none';*/
+			try {
+				var userDetail = JSON.parse(xhttp.responseText);
+				document.getElementById('color_for_overview').classList.add('gray');
 
-			var userDetail = JSON.parse(xhttp.responseText);
-			show(userDetail);
+				show(userDetail);
+				
+			} catch (err) {
+				document.getElementById('error-4').innerHTML = err.message;
+			}
+
 		};
 	}
 	// xhttp.open("GET","
@@ -34,9 +46,9 @@ function getUserDetails() {
 
 function show(userDetail) {
 
-	fourWeekAvg = document.getElementById('change_time_4').innerHTML = showTime(userDetail.fourWeekAvg * 4);
+	fourWeekAvg = document.getElementById('fourWeekAvg').innerHTML = showTime(userDetail.fourWeekAvg);
 
-	twelveWeekAvg = document.getElementById('change_time_12').innerHTML = showTime(userDetail.twelveWeekAvg * 12);
+	twelveWeekAvg = document.getElementById('twelveWeekAvg').innerHTML = showTime(userDetail.twelveWeekAvg);
 
 }
 
@@ -44,10 +56,8 @@ function showTime(givenMins) {
 	if (isNaN(givenMins)) {
 		return '';
 	}
-	const
-	minsPerHour = 60;
-	let
-	respString = '';
+	const minsPerHour = 60;
+	let respString = '';
 	var hours = Math.floor(givenMins / minsPerHour);
 	var mins = givenMins % minsPerHour;
 	if (hours > 0) {
@@ -55,11 +65,85 @@ function showTime(givenMins) {
 	}
 	if (mins > 0) {
 		respString += mins + 'mins';
+	} else {
+		respString = mins + ' mins'
 	}
 	return respString;
 }
-function changeColor(fourWeekAvg) {
-	document.getElementById('color_for_four').innerHTML = getColor(fourWeekAvg);
+
+function getChallengeInfo(week) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		var state = xhttp.readyState;
+		if (state == 0 || state == 1 || state == 2 || state == 3) {
+			document.getElementById('loader_' + week).style.display = 'inline-block';
+
+		}
+		xhttp.onload = function() {
+			document.getElementById('loader_' + week).style.display = 'none';
+			try {
+				var userDetails = JSON.parse(xhttp.responseText);
+				console.log(userDetails);
+				getDetails(userDetails, week);
+				changeColor(userDetails, week);
+			} catch (err) {
+				document.getElementById('error-0').innerHTML = err.message;
+				console.error(err.stack);
+
+			}
+
+		};
+
+	}
+	xhttp.open("GET", '/challenge?week=' + week, true);
+	xhttp.setRequestHeader('content-type', 'application/json');
+	xhttp.send();
+}
+function getStartDate(startDate, endYear) {
+	var dateStart = startDate.getDate();
+	var startMonth = monthNames[startDate.getMonth()];
+	var startYear = startDate.getFullYear();
+	var startDateString = '';
+	if (endYear == startYear) {
+		startDateString = dateStart + ' ' + startMonth;
+		return startDateString;
+	} else {
+		startDateString = dateStart + ' ' + startMonth + ' ' + startYear;
+		return startDateString;
+	}
+
+}
+function getEndDate(endDate) {
+	var dateEnd = endDate.getDate();
+	var endMonth = monthNames[endDate.getMonth()];
+	var endYear = endDate.getFullYear();
+	var endDateString = dateEnd + ' ' + endMonth + ' ' + endYear;
+	return endDateString;
+}
+function getDetails(userDetails, week) {
+	try {
+		var startDate = new Date(userDetails.startDate);
+		var endDate = new Date(userDetails.endDate);
+		var startDateString = getStartDate(startDate, endDate.getFullYear());
+		var endDateString = getEndDate(endDate);
+		if ((startDate.getDate() == endDate.getDate())
+				&& (monthNames[startDate.getMonth()] == monthNames[endDate
+						.getMonth()])
+				&& (startDate.getFullYear() == endDate.getFullYear())) {
+			var date = "Today";
+		} else {
+			var date = startDateString + " - " + endDateString;
+		}
+		document.getElementById('date-' + week).innerHTML = date;
+		thisWeek = document.getElementById('change_time_' + week).innerHTML = showTime(userDetails.minutes);
+
+	} catch (err) {
+		console.error('Error while building the date : ' + err.stack);
+	}
+}
+function changeColor(userDetails, week) {
+
+	document.getElementById('color_for_' + week).classList.add(getColor(userDetails.minutes));
 
 }
 function getColor(avgMins) {
@@ -70,46 +154,4 @@ function getColor(avgMins) {
 	} else {
 		return 'red';
 	}
-}
-function getChallengeInfo() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		var state = xhttp.readyState;
-		if (state == 0 || state == 1 || state == 2 || state == 3) {
-			document.getElementById('loader').style.display = 'inline-block';
-
-		}
-		xhttp.onload = function() {
-			document.getElementById('loader').style.display = 'none';
-			var timeOut = 30000;
-			xhttp.ontimeout = function(e) {
-				document.getElementById('loader').style.display = 'TimeOut!';
-			};
-			var userDetails = JSON.parse(xhttp.responseText);
-			console.log(userDetails);
-			getDetails(userDetails);
-
-		};
-
-	}
-	xhttp.open("GET", '/challenge', true);
-	xhttp.setRequestHeader('content-type', 'application/json');
-	xhttp.send();
-}
-
-function getDetails(userDetails) {
-	var startDate = new Date(userDetails.startDate);
-	var endDate = new Date(userDetails.endDate);
-	var startDateString = startDate.getDate() + "/" + startDate.getMonth()
-			+ "/" + startDate.getFullYear();
-	var endDateString = endDate.getDate() + "/" + endDate.getMonth() + "/"
-			+ endDate.getFullYear();
-	var date = startDateString + "- " + endDateString;
-
-	console.log(date);
-	dateOf = document.getElementById('date').innerHTML = date;
-	thisWeek = document.getElementById('change_time_0').innerHTML = showTime(userDetails.minutes);
-	/*dateOfFour = document.getElementById('date-4').innerHTML = date;
-	dateOfFour = document.getElementById('date-12').innerHTML = date;*/
-
 }

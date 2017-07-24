@@ -10,8 +10,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/dashboard.js"></script>
 <title>Full Learn</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="css/materialize.min.css"
 	media="screen,projection" />
 <!-- Bootstrap Styles-->
@@ -78,12 +77,19 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-5 full-card-center">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div id="color_for_overview" class="card-stacked red">
+								<div id="color_for_overview" class="card-stacked ">
 									<div class="card-content">
 										<h3>Overview</h3>
 									</div>
-									<div class="card-action ">
-										<strong>00:00</strong>
+									<div class="row learn-overview">
+										<div class="card-action col-md-6">
+											<h4>Four week avg:</h4>
+											<strong id="fourWeekAvg"></strong>
+										</div>
+										<div class="card-action col-md-6">
+											<h4>Twelve week avg:</h4>
+											<strong id="twelveWeekAvg"></strong>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -96,26 +102,29 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div id="color_for_this" class="card-stacked orange">
+								<div id="color_for_0" class="card-stacked">
 									<div class="card-content">
 										<h3>This week</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
-										<img class="loader" id="loader" src="images/loader.gif"></img>
-										<div id="date"></div>
-										<strong id="change_time_0"></strong>
+										<img class="loader" id="loader_0" src="images/loader.gif"></img>
+										<div id="error-0"></div>
+										<div id="date-0"></div>
+										<strong id="change_time_0">
+										</strong>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4 ">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div id="color_for_four" class="card-stacked blue">
+								<div id="color_for_4" class="card-stacked">
 									<div class="card-content">
 										<h3>Four weeks</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
-										<img class="loader" id="loader-4" src="images/loader.gif"></img>
+										<img class="loader" id="loader_4" src="images/loader.gif"></img>
+										<div id="error-4"></div>
 										<div id="date-4"></div>
 										<strong id="change_time_4"></strong>
 									</div>
@@ -124,15 +133,14 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div id="color_for_twelve" class="card-stacked green">
+								<div id="color_for_12" class="card-stacked">
 									<div class="card-content">
 										<h3>Twelve weeks</h3>
 									</div>
 									<div class="card-action full-card-lg-action">
-										<img class="loader" id="loader-12" src="images/loader.gif"></img>
+										<img class="loader" id="loader_12" src="images/loader.gif"></img>
+										<div id="error-12"></div>
 										<div id="date-12"></div>
-
-
 										<strong id="change_time_12"></strong>
 									</div>
 								</div>

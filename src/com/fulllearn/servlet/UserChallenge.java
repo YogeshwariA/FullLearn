@@ -38,8 +38,10 @@ public class UserChallenge extends HttpServlet {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
 		String email = user.getLogin();
-		long startTime = getStartDate(4);
-		long endTime = getEndDate(4);
+		String weekAsString=req.getParameter("week");
+		int week=Integer.parseInt(weekAsString);
+		long startTime = getStartDate(week);
+		long endTime = getEndDate(week);
 		String urlparameter = "apiKey=" + Constants.API_KEY + "&email=" + email + "&startTime=" + startTime
 				+ "&endTime=" + endTime;
 		String jsonResponse = HttpConnectionHelper.getJson("GET", Constants.CHALLENGE_API + "/v1/completedMinutes",
@@ -62,7 +64,7 @@ public class UserChallenge extends HttpServlet {
 
 		Calendar calendar = getStartTimeCalendarInstance();
 		long result = 0;
-
+		System.out.println(calendar.getTime());
 		switch (week) {
 		case 0:
 			int dayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK);
@@ -74,14 +76,14 @@ public class UserChallenge extends HttpServlet {
 				break;
 			}
 
-		case 4:
-		case 12:
+		default:
 			int currentWeek = calendar.get(Calendar.WEEK_OF_YEAR);
 			calendar.set(Calendar.WEEK_OF_YEAR, currentWeek - week);
 			calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 			break;
 
 		}
+		System.out.println(calendar.getTime());
 		result = calendar.getTimeInMillis();
 		
 		return result;
@@ -89,6 +91,7 @@ public class UserChallenge extends HttpServlet {
 
 	private long getEndDate(int week) {
 		Calendar calendar = getEndTimeCalendarInstance();
+		System.out.println(calendar.getTime());
 		long result = 0;
 
 		switch (week) {
@@ -99,6 +102,7 @@ public class UserChallenge extends HttpServlet {
 			calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 			break;
 		}
+		System.out.println(calendar.getTime());
 		result = calendar.getTimeInMillis();
 		System.out.println(week + ": " + result);
 		return result;
@@ -115,8 +119,7 @@ public class UserChallenge extends HttpServlet {
 	}
 
 	private Calendar getEndTimeCalendarInstance() {
-
-		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.HOUR_OF_DAY, 23);
 		calendar.set(Calendar.MINUTE, 59);
 		calendar.set(Calendar.SECOND, 59);

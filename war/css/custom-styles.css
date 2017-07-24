@@ -733,19 +733,24 @@ ul.dropdown-menu.dropdown-messages li a div {
 	background: #e0e8f5;
 }
 
-.dashboard-cards .card-stacked {
-	color: #fff;
-	border-left: 1px solid rgba(255, 255, 255, 0.18);
-}
+
 
 .dashboard-cards .card-content {
-	
 	padding: 14px 20px;
 	border-bottom: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 .dashboard-cards .card-action {
 	text-align: center;
+	border-top: 0;
+}
+
+.dashboard-cards .learn-overview{
+	margin-bottom: 0;
+}
+
+.learn-overview .card-action:first-of-type{
+	border-right: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 .dashboard-cards .card-content h3 {
@@ -755,7 +760,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 
 .dashboard-cards .card-action strong {
 	font-weight: 700;
-	font-size: 33px;
+	font-size: 20px;
 	color: rgba(255, 255, 255, 0.65);
 }
 
@@ -985,7 +990,6 @@ ul.dropdown-menu.dropdown-messages li a div {
 		url("https://www.creditmutuel.fr/cmne/fr/banques/webservices/nswr/images/loading.gif")
 		no-repeat center center rgba(0, 0, 0, 0.25)
 } */
-
 @media ( max-width :320px) {
 	ul#dropdown1 {
 		left: 0px !important;
@@ -1005,6 +1009,8 @@ ul.dropdown-menu.dropdown-messages li a div {
 .full-card-lg-action {
 	min-height: 400px;
 }
-.loader{
-	z-index:0 !important;
+
+.loader {
+	z-index: 0 !important;
+	display: none;
 }
