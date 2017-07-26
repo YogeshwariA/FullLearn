@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script type="text/javascript" src="js/jquery-3.2.1.min.js/"></script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/dashboard.js"></script>
 <title>Full Learn</title>
@@ -77,17 +77,17 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-5 full-card-center">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
-								<div id="color_for_overview" class="card-stacked ">
+								<div id="color_for_overview" class="card-stacked">
 									<div class="card-content">
-										<h3>Overview</h3>
+										<h3 >Overview</h3>
 									</div>
 									<div class="row learn-overview">
-										<div class="card-action col-md-6">
-											<h4>Four week avg:</h4>
+										<div id="change_color_4" class="card-action col-md-6">
+											<h4 >Four week avg:</h4>
 											<strong id="fourWeekAvg"></strong>
 										</div>
-										<div class="card-action col-md-6">
-											<h4>Twelve week avg:</h4>
+										<div  id="change_color_12" class="card-action col-md-6">
+											<h4 >Twelve week avg:</h4>
 											<strong id="twelveWeekAvg"></strong>
 										</div>
 									</div>
@@ -106,12 +106,14 @@
 									<div class="card-content">
 										<h3>This week</h3>
 									</div>
-									<div class="card-action full-card-lg-action">
+									<div class="card-action">
 										<img class="loader" id="loader_0" src="images/loader.gif"></img>
 										<div id="error-0"></div>
 										<div id="date-0"></div>
-										<strong id="change_time_0">
-										</strong>
+										<strong id="change_time_0"></strong>
+										<ul  id="challenge_details_0">
+										
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -127,6 +129,9 @@
 										<div id="error-4"></div>
 										<div id="date-4"></div>
 										<strong id="change_time_4"></strong>
+										<ul class="full-left-align" id="challenge_details_4">
+										
+										</ul>
 									</div>
 								</div>
 							</div>
@@ -142,6 +147,9 @@
 										<div id="error-12"></div>
 										<div id="date-12"></div>
 										<strong id="change_time_12"></strong>
+										<ul class="full-left-align" id="challenge_details_12">
+										
+										</ul>
 									</div>
 								</div>
 							</div>

@@ -348,6 +348,11 @@ label {
 	color: #fff;
 }
 
+.orange {
+	background-color: #ff9800;
+	color: #fff;
+}
+
 .back-footer-red {
 	background-color: #F0433D;
 	color: #fff;
@@ -515,7 +520,7 @@ div#sideNav:hover {
 	font-size: 24px;
 	font-weight: 700; /* text-transform: uppercase; */
 	line-height: 30px;
-	background: #f44336;
+	background: #1F2836;
 }
 
 .navbar-brand b {
@@ -544,7 +549,7 @@ div#sideNav:hover {
 
 .top-navbar .nav>li>a:hover, .top-navbar .nav>li>a:focus {
 	text-decoration: none;
-	color: #f44336 !important;
+	color: #1F2836 !important;
 	background: transparent;
 }
 
@@ -663,7 +668,7 @@ ul.nav.nav-second-level.collapse.in {
 
 .top-navbar .navbar-brand:hover {
 	color: #FFFFFF;
-	background-color: #f44336;
+	background-color: #1F2836;
 }
 
 .dropdown-user li {
@@ -761,7 +766,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 .dashboard-cards .card-action strong {
 	font-weight: 700;
 	font-size: 20px;
-	color: rgba(255, 255, 255, 0.65);
+	
 }
 
 .donutpad {
@@ -1013,4 +1018,59 @@ ul.dropdown-menu.dropdown-messages li a div {
 .loader {
 	z-index: 0 !important;
 	display: none;
+}
+
+.full-left-align {
+	text-align:left;
+	overflow: auto;
+    overflow-x: hidden;
+     height:308px;
+}
+
+.full-left-align li{
+	position:relative;
+}
+
+.full-left-align li span{
+	font-size:14px;
+}
+.full-left-align li span:first-of-type {
+	display: inline-block;
+	max-width: 230px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.full-left-align li span:last-of-type {
+	position: absolute;
+	right: 5px;
+	margin-left:10px;
+}
+
+#challenge_details_0
+{
+	height:308px;
+	overflow:hidden;
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #0ae;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
 }

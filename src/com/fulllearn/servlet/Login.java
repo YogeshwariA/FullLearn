@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
 				+ Constants.REDIRECT_URL + "&grant_type=authorization_code";
 
 		String result = HttpConnectionHelper.getJson("GET", Constants.OAUTH_ACCESS_TOKEN_URL+"/o/oauth2/v1/token", urlParameters, null);
-
+		
 		try {
 			if (!result.isEmpty()) {
 

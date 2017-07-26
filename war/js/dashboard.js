@@ -10,35 +10,45 @@ function showDashboard() {
 	getChallengeInfo(12);
 }
 const
-monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep","Oct", "Nov", "Dec" ];
+monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep",
+		"Oct", "Nov", "Dec" ];
 
 function getUserDetails() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		var state = xhttp.readyState;
 		if (state == 0 || state == 1 || state == 2 || state == 3) {
-			/*document.getElementById('loader-4').style.display = 'inline-block';
-			document.getElementById('loader-12').style.display = 'inline-block';*/
+			/*
+			 * document.getElementById('loader-4').style.display =
+			 * 'inline-block';
+			 * document.getElementById('loader-12').style.display =
+			 * 'inline-block';
+			 */
 
 		}
 
 		xhttp.onload = function() {
-			/*document.getElementById('loader-4').style.display = 'none';
-			document.getElementById('loader-12').style.display = 'none';*/
+			/*
+			 * document.getElementById('loader-4').style.display = 'none';
+			 * document.getElementById('loader-12').style.display = 'none';
+			 */
 			try {
 				var userDetail = JSON.parse(xhttp.responseText);
-				document.getElementById('color_for_overview').classList.add('gray');
+
+				document.getElementById('change_color_4').classList
+						.add(getColor(userDetail.fourWeekAvg));
+				document.getElementById('change_color_12').classList
+						.add(getColor(userDetail.twelveWeekAvg));
 
 				show(userDetail);
-				
+
 			} catch (err) {
 				document.getElementById('error-4').innerHTML = err.message;
 			}
 
 		};
 	}
-	// xhttp.open("GET","
-	// https://full-learn.appspot.com/api/learn/stats/userId/25c01d98-46f7-408a-87b1-e0339551a5ed",true);
+
 	xhttp.open("GET", '/user_stats', true);
 	xhttp.setRequestHeader('content-type', 'application/json');
 	xhttp.send();
@@ -56,8 +66,10 @@ function showTime(givenMins) {
 	if (isNaN(givenMins)) {
 		return '';
 	}
-	const minsPerHour = 60;
-	let respString = '';
+	const
+	minsPerHour = 60;
+	let
+	respString = '';
 	var hours = Math.floor(givenMins / minsPerHour);
 	var mins = givenMins % minsPerHour;
 	if (hours > 0) {
@@ -83,11 +95,12 @@ function getChallengeInfo(week) {
 			document.getElementById('loader_' + week).style.display = 'none';
 			try {
 				var userDetails = JSON.parse(xhttp.responseText);
-				console.log(userDetails);
+				// console.log(userDetails);
+				getChallengeDetails(userDetails, week);
 				getDetails(userDetails, week);
 				changeColor(userDetails, week);
 			} catch (err) {
-				document.getElementById('error-0').innerHTML = err.message;
+				document.getElementById('error-0' + week).innerHTML = err.message;
 				console.error(err.stack);
 
 			}
@@ -98,6 +111,15 @@ function getChallengeInfo(week) {
 	xhttp.open("GET", '/challenge?week=' + week, true);
 	xhttp.setRequestHeader('content-type', 'application/json');
 	xhttp.send();
+}
+function getChallengeDetails(userDetails, week) {
+	var challengeDetails = userDetails.challenges_details;
+
+	var innerHtml = "";
+	for ( var key in challengeDetails) {
+		innerHtml += '<li>' + '<span title="' + key + '" > '+key+ '</span>'+ '<span>'+ challengeDetails[key]+"</span>" + '</li>';
+	}
+	document.getElementById("challenge_details_" + week).innerHTML = innerHtml;
 }
 function getStartDate(startDate, endYear) {
 	var dateStart = startDate.getDate();
@@ -115,15 +137,22 @@ function getStartDate(startDate, endYear) {
 }
 function getEndDate(endDate) {
 	var dateEnd = endDate.getDate();
+	console.log(dateEnd);
 	var endMonth = monthNames[endDate.getMonth()];
 	var endYear = endDate.getFullYear();
+
 	var endDateString = dateEnd + ' ' + endMonth + ' ' + endYear;
 	return endDateString;
 }
 function getDetails(userDetails, week) {
 	try {
 		var startDate = new Date(userDetails.startDate);
-		var endDate = new Date(userDetails.endDate);
+		if (week == 0) {
+			var endDate = new Date();
+		} else {
+			var endDate = new Date(userDetails.endDate);
+		}
+
 		var startDateString = getStartDate(startDate, endDate.getFullYear());
 		var endDateString = getEndDate(endDate);
 		if ((startDate.getDate() == endDate.getDate())
@@ -142,9 +171,8 @@ function getDetails(userDetails, week) {
 	}
 }
 function changeColor(userDetails, week) {
-
-	document.getElementById('color_for_' + week).classList.add(getColor(userDetails.minutes));
-
+	document.getElementById('color_for_' + week).classList
+			.add(getColor(userDetails.minutes));
 }
 function getColor(avgMins) {
 	if (avgMins > 150) {
