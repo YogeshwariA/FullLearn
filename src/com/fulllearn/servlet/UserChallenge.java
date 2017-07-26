@@ -38,24 +38,19 @@ public class UserChallenge extends HttpServlet {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("user");
 		String email = user.getLogin();
-		String weekAsString=req.getParameter("week");
-		int week=Integer.parseInt(weekAsString);
+		String weekAsString = req.getParameter("week");
+		int week = Integer.parseInt(weekAsString);
 		long startTime = getStartDate(week);
 		long endTime = getEndDate(week);
-		String urlparameter = "apiKey=" + Constants.API_KEY + "&email=" + email + "&startTime=" + startTime
-				+ "&endTime=" + endTime;
-		String jsonResponse = HttpConnectionHelper.getJson("GET", Constants.CHALLENGE_API + "/v1/completedMinutes",
-				urlparameter, null);
+		String urlparameter = "apiKey=" + Constants.API_KEY + "&email=" + email + "&startTime=" + startTime+ "&endTime=" + endTime;
+		String jsonResponse = HttpConnectionHelper.getJson("GET", Constants.CHALLENGE_API + "/v1/completedMinutes",urlparameter, null);
 		System.out.println(jsonResponse);
+		
 		AUResponse response = MAPPER.readValue(jsonResponse, AUResponse.class);
-
 		Map<String, ChallengeDetail> data = response.getData();
-
 		ChallengeDetail details = data.get(email);
 		details.setStartDate(startTime);
 		details.setEndDate(endTime);
-		System.out.println(details.toString());
-
 		return details;
 
 	}
@@ -85,7 +80,7 @@ public class UserChallenge extends HttpServlet {
 		}
 		System.out.println(calendar.getTime());
 		result = calendar.getTimeInMillis();
-		
+
 		return result;
 	}
 

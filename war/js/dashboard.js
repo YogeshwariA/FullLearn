@@ -114,10 +114,11 @@ function getChallengeInfo(week) {
 }
 function getChallengeDetails(userDetails, week) {
 	var challengeDetails = userDetails.challenges_details;
-
 	var innerHtml = "";
+	var challengeInfo = {};
 	for ( var key in challengeDetails) {
-		innerHtml += '<li>' + '<span title="' + key + '" > '+key+ '</span>'+ '<span>'+ challengeDetails[key]+"</span>" + '</li>';
+		challengeInfo = challengeDetails[key];
+		innerHtml += '<li>' +'<a title="' + key + '"  href="'+challengeInfo['link']+'" target="_blank">' + key + '</a>'+ '<span>' + challengeInfo['mins'] + "</span>" + '</li>';
 	}
 	document.getElementById("challenge_details_" + week).innerHTML = innerHtml;
 }

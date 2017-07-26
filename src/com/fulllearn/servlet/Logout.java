@@ -26,7 +26,9 @@ public class Logout extends HttpServlet {
 		HttpSession session = req.getSession();
 
 		session.setAttribute("user", null);
-		session.invalidate();
+		//session.invalidate();
+		
+		
 		req.getRequestDispatcher("/WEB-INF/html/login.html").forward(req, resp);
 
 	}
