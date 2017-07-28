@@ -17,7 +17,6 @@ import com.fulllearn.helper.HttpConnectionHelper;
 import com.fulllearn.model.AUResponse;
 import com.fulllearn.model.ChallengeDetail;
 import com.fulllearn.model.User;
-
 @SuppressWarnings("serial")
 public class UserChallenge extends HttpServlet {
 	static final ObjectMapper MAPPER = new ObjectMapper();
@@ -29,6 +28,7 @@ public class UserChallenge extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		ChallengeDetail challengeDetails = getChallengeDetails(req, resp);
 		resp.setContentType("application/json");
 		resp.getWriter().write(MAPPER.writeValueAsString(challengeDetails));

@@ -9,8 +9,7 @@ function showDashboard() {
 	getChallengeInfo(4);
 	getChallengeInfo(12);
 }
-const
-monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep",
+const monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep",
 		"Oct", "Nov", "Dec" ];
 
 function getUserDetails() {
@@ -115,10 +114,9 @@ function getChallengeInfo(week) {
 function getChallengeDetails(userDetails, week) {
 	var challengeDetails = userDetails.challenges_details;
 	var innerHtml = "";
-	var challengeInfo = {};
 	for ( var key in challengeDetails) {
-		challengeInfo = challengeDetails[key];
-		innerHtml += '<li>' +'<a title="' + key + '"  href="'+challengeInfo['link']+'" target="_blank">' + key + '</a>'+ '<span>' + challengeInfo['mins'] + "</span>" + '</li>';
+		
+			innerHtml += '<li>' + '<span title="' + key + '" > '+key+ '</span>'+ '<span>'+ challengeDetails[key]+"</span>" + '</li>';
 	}
 	document.getElementById("challenge_details_" + week).innerHTML = innerHtml;
 }
