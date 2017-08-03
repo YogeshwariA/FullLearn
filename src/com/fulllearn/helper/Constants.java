@@ -9,7 +9,6 @@ public static final String OAUTH_USER_API="https://api-dot-live-fullspectrum.app
 public static final String FULL_LEARN_API="https://full-learn.appspot.com";
 public static final String API_KEY = "b2739ff0eb7543e5a5c43e88f3cb2a0bd0d0247d";
 public static final String CHALLENGE_API="https://mint4-dot-live-adaptivecourse.appspot.com";
-
 //public static final String CHALLENGE_API = "https://my.adaptiveu.io";
 
 }

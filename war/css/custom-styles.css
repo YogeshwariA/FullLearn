@@ -803,10 +803,10 @@ ul.dropdown-menu.dropdown-messages li a div {
 	#page-wrapper {
 		margin: 0 0 0 260px;
 		padding: 0;
-		min-height: 1200px;
+		min-height: 750px;
 	}
 	.navbar-side {
-		width: 260px;
+		width: 19%;
 		z-index: 1;
 	}
 	.navbar {
@@ -1028,11 +1028,11 @@ ul.dropdown-menu.dropdown-messages li a div {
 	position: relative;
 }
 
-.full-left-align li span {
+.full-left-align li a {
 	font-size: 14px;
 }
 
-.full-left-align li span:first-of-type {
+.full-left-align li a:first-of-type {
 	display: inline-block;
 	max-width: 230px;
 	overflow: hidden;
@@ -1046,7 +1046,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 	margin-left: 10px;
 }
 
-#challenge_details_0 {
+.challenge_details_for_0{
 	height: 308px;
 	overflow: hidden;
 }

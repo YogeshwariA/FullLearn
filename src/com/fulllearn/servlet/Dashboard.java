@@ -22,18 +22,21 @@ public class Dashboard extends HttpServlet {
 	}
 
 	private void welcomeUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession(false);
 		
-		if (session.getAttribute("user")!= null) {
+		HttpSession session = req.getSession();
+		try{
+			if (session!=null && session.getAttribute("user")!= null) {
+		
 		
 			req.getRequestDispatcher("/jsp/dashboard.jsp").forward(req, resp);
 			
 		} else {
 			
-			session.invalidate();
-			
-			
 			req.getRequestDispatcher("WEB-INF/html/login.html").forward(req, resp);
+		}
+		}catch(Exception e){
+			resp.getWriter().println("Try again!.");
+			
 		}
 	}
 

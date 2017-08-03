@@ -50,7 +50,7 @@
 		<nav class="navbar-default navbar-side" role="navigation">
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
-					<li><a id="dashboard"
+					<li><a id="dashboard" href="javascript:showDashboard()"
 						class="active-menu waves-effect waves-dark"><i
 							class="fa fa-dashboard"></i>Dashboard</a></li>
 				</ul>
@@ -58,10 +58,8 @@
 		</nav>
 		<!-- /. NAV SIDE  -->
 		<div id="page-wrapper">
-			<div class="header">
-				
-			</div>
-			<div id="page-inner">
+			<div class="header"></div>
+			<div id="page-inner" style="height:500px">
 				<div class="dashboard-cards">
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-5 full-card-center">
@@ -73,10 +71,12 @@
 									<div class="row learn-overview">
 										<div id="change_color_4" class="card-action col-md-6">
 											<h4>Four week avg:</h4>
+											<img class="loader" id="loader_avg_4" src="images/loader.gif"></img>
 											<strong id="fourWeekAvg"></strong>
 										</div>
 										<div id="change_color_12" class="card-action col-md-6">
 											<h4>Twelve week avg:</h4>
+											<img class="loader" id="loader_avg_12" src="images/loader.gif"></img>
 											<strong id="twelveWeekAvg"></strong>
 										</div>
 									</div>
@@ -84,7 +84,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="card horizontal cardIcon waves-effect waves-dark">
 								<div id="color_for_0" class="card-stacked">
@@ -95,7 +94,9 @@
 										<img class="loader" id="loader_0" src="images/loader.gif"></img>
 										<div id="error-0"></div>
 										<div id="date-0"></div>
-										<div class="change_time_div"><strong id="change_time_0"></strong></div>
+										<div class="change_time_div">
+											<strong id="change_time_0"></strong>
+										</div>
 										<ul class="full-left-align" id="challenge_details_0">
 
 										</ul>
@@ -113,7 +114,9 @@
 										<img class="loader" id="loader_4" src="images/loader.gif"></img>
 										<div id="error-4"></div>
 										<div id="date-4"></div>
-										<div class="change_time_div"><strong id="change_time_4"></strong></div>
+										<div class="change_time_div">
+											<strong id="change_time_4"></strong>
+										</div>
 										<ul class="full-left-align" id="challenge_details_4">
 
 										</ul>
@@ -131,7 +134,9 @@
 										<img class="loader" id="loader_12" src="images/loader.gif"></img>
 										<div id="error-12"></div>
 										<div id="date-12"></div>
-										<div class="change_time_div"><strong id="change_time_12"></strong></div>
+										<div class="change_time_div">
+											<strong id="change_time_12"></strong>
+										</div>
 										<ul class="full-left-align" id="challenge_details_12">
 
 										</ul>

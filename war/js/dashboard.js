@@ -9,28 +9,24 @@ function showDashboard() {
 	getChallengeInfo(4);
 	getChallengeInfo(12);
 }
-const monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep",
-		"Oct", "Nov", "Dec" ];
-
+const monthNames = [ "Jan", "Feb", "Mar", "Apl", "May", "June", "July", "Aug", "Sep","Oct", "Nov", "Dec" ];
+const link="https://my.adaptiveu.io/full/me/all/";
 function getUserDetails() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		var state = xhttp.readyState;
 		if (state == 0 || state == 1 || state == 2 || state == 3) {
-			/*
-			 * document.getElementById('loader-4').style.display =
-			 * 'inline-block';
-			 * document.getElementById('loader-12').style.display =
-			 * 'inline-block';
-			 */
+
+			document.getElementById('loader_avg_4').style.display = 'inline-block';
+			document.getElementById('loader_avg_12').style.display = 'inline-block';
 
 		}
 
 		xhttp.onload = function() {
-			/*
-			 * document.getElementById('loader-4').style.display = 'none';
-			 * document.getElementById('loader-12').style.display = 'none';
-			 */
+
+			document.getElementById('loader_avg_4').style.display = 'none';
+			document.getElementById('loader_avg_12').style.display = 'none';
+
 			try {
 				var userDetail = JSON.parse(xhttp.responseText);
 
@@ -67,8 +63,7 @@ function showTime(givenMins) {
 	}
 	const
 	minsPerHour = 60;
-	let
-	respString = '';
+	let respString = '';
 	var hours = Math.floor(givenMins / minsPerHour);
 	var mins = givenMins % minsPerHour;
 	if (hours > 0) {
@@ -103,9 +98,7 @@ function getChallengeInfo(week) {
 				console.error(err.stack);
 
 			}
-
 		};
-
 	}
 	xhttp.open("GET", '/challenge?week=' + week, true);
 	xhttp.setRequestHeader('content-type', 'application/json');
@@ -115,8 +108,12 @@ function getChallengeDetails(userDetails, week) {
 	var challengeDetails = userDetails.challenges_details;
 	var innerHtml = "";
 	for ( var key in challengeDetails) {
+		var names = key;
+		var name = names.toLowerCase();
 		
-			innerHtml += '<li>' + '<span title="' + key + '" > '+key+ '</span>'+ '<span>'+ challengeDetails[key]+"</span>" + '</li>';
+			name = name.replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').split('-').filter(function(word){return word;}).join('-');
+			console.log(name);
+		innerHtml += '<li>' + '<a  title="'+ key + '"  href="'+link+name+'"  target="_blank"> ' + key + '</a>'+ '<span>' + challengeDetails[key] + "</span>" + '</li>';
 	}
 	document.getElementById("challenge_details_" + week).innerHTML = innerHtml;
 }
